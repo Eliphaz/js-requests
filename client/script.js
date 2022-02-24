@@ -2,6 +2,7 @@
 //THE TEST SERVER IS RUNNING ON LOCALHOST:3000//
 ////////////////////////////////////////////////
 
+
 // PROBLEM 1
 /*
     In the index.html file in this folder there is a button with an id of 'say-hello-button'!
@@ -190,3 +191,21 @@ document.querySelector('#query-button').addEventListener('click', queryTest)
 */
 
 // CODE HERE 
+
+const createFood = (event) =>{
+    const foodInput = document.querySelector('#food-input')
+    event.preventDefault()
+    body = {
+        newFood: foodInput.value
+    }
+    axios.post('http://localhost:3000/food', body).then(res =>{
+        for(i = 0; i < res.data.length; i++){
+            food = document.createElement('p')
+            food.textContent = res.data[i]
+            document.body.appendChild(food)
+        }
+    }
+    )
+}
+form = document.querySelector('#food-form')
+form.addEventListener('submit',createFood)
