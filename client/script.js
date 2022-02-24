@@ -9,7 +9,7 @@
     Use querySelector to select that button and save it to a variable called sayHelloButton
 */
 
-// CODE HERE
+sayHelloButton = document.querySelector('#say-hello-button')
 
 
 // PROBLEM 2
@@ -19,7 +19,11 @@
     Attach a mouseover event to sayHelloButton that calls the function you wrote
 */
 
-// CODE HERE
+let changeBackgroundColor = (event) =>{
+    event.target.style.backgroundColor = 'black'
+    event.target.style.color = 'white'
+}
+sayHelloButton.addEventListener('mouseover',changeBackgroundColor)
 
 
 // PROBLEM 3
@@ -31,7 +35,11 @@
     Attach another listener that fires your second function when the mouseout event occurs on the button
 */
 
-// CODE HERE
+let defaultBackground = (event) =>{
+    event.target.style.backgroundColor = '#EFEFEF'
+    event.target.style.color = 'black'
+}
+sayHelloButton.addEventListener('mouseout',defaultBackground)
 
 
 // PROBLEM 4
@@ -53,7 +61,7 @@ const sayHello = () => {
 // DO NOT EDIT FUNCTION
 
 // CODE HERE
-
+sayHelloButton.addEventListener('click',sayHello)
 
 // PROBLEM 5 
 /*
@@ -67,8 +75,10 @@ const sayHello = () => {
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
-}
+    axios.get('http://localhost:3000/animals').then(res =>{
+        console.log(res.data)
+        })}
+
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
 
@@ -87,8 +97,13 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
+    axios.get('http://localhost:3000/repeat/donne').then(res =>{
+        console.log(res.data)
+        repeatText = document.querySelector("#repeat-text")
+        repeatText.textContent = res.data
+    })
 }
+document.querySelector("#repeat-button").addEventListener('click',repeatMyParam)
 
 // PROBLEM 7
 /*
@@ -111,7 +126,12 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
-
+const queryTest = () =>{
+    axios.get('http://localhost:3000/query-test/?myquery=a-really-awesome-query&anotherOne=DJ-Khalid').then(res =>{
+        console.log(res.data)
+    })
+}
+document.querySelector('#query-button').addEventListener('click', queryTest)
 
 
 ////////////////
