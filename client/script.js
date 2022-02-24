@@ -76,7 +76,11 @@ sayHelloButton.addEventListener('click',sayHello)
 
 const ohMy = () => {
     axios.get('http://localhost:3000/animals').then(res =>{
-        console.log(res.data)
+        for(i = 0; i < res.data.length; i++){
+            animal = document.createElement('p')
+            animal.textContent = res.data[i]
+            document.body.appendChild(animal)
+        }
         })}
 
 
@@ -127,7 +131,7 @@ document.querySelector("#repeat-button").addEventListener('click',repeatMyParam)
 
 // CODE HERE
 const queryTest = () =>{
-    axios.get('http://localhost:3000/query-test/?myquery=a-really-awesome-query&anotherOne=DJ-Khalid').then(res =>{
+    axios.get('http://localhost:3000/query-test/').then(res =>{
         console.log(res.data)
     })
 }
@@ -152,8 +156,10 @@ document.querySelector('#query-button').addEventListener('click', queryTest)
     In the function that you wrote for Problem 8, change the URL to test a couple different scenarios. 
 
     1: Send no queries on the URL -- what happened? 
+    you sent a empty query
 
     2: Send more than 1 query on the URL -- what happened? 
+    you sent multiple querys!
 */
 
 // Edit code in Problem 8
